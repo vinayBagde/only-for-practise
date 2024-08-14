@@ -1,16 +1,23 @@
-import "./Form.css";
 export default function Form() {
-  let submitted = (event) => {
+  let formSubmitted = (event) => {
     event.preventDefault();
     console.log("form was submitted");
   };
+
+  let styles = {
+    border: "1px solid white",
+    borderRadius: "15px",
+    backgroundColor: "yellow",
+  };
   return (
     <>
-      <div id="form">
-        <form action="./action" onSubmit={submitted}>
-          <input type="text" placeholder="user name" />
+      <h1>State In React</h1>
+      <div style={styles}>
+        <form action="./action" onSubmit={formSubmitted}>
+          <input type="text" placeholder="enter name" />
           <br />
-          <button>click</button>
+          <br />
+          <button style={{ backgroundColor: "blue" }}>submit</button>
         </form>
       </div>
     </>
