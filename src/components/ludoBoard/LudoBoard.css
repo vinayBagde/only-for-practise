@@ -1,0 +1,50 @@
+#game {
+  display: flex;
+}
+
+.board {
+  background-color: white;
+  border-radius: 20px;
+  border: 5px solid black;
+  padding-bottom: 20px;
+  margin-bottom: 10px;
+  width: 100px;
+  margin-right: 20px;
+}
+
+#blue {
+  height: 20px;
+  background-color: blue;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+#yellow {
+  height: 20px;
+  background-color: yellow;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+#green {
+  height: 20px;
+  background-color: green;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+#red {
+  height: 20px;
+  background-color: red;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+h3 {
+  background-color: black;
+  margin-top: 0px;
+}
+
+.btn {
+  background-color: black;
+}
