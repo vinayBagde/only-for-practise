@@ -17,12 +17,19 @@ export default function TodoList() {
     setNewTodo("");
   };
 
-
   let deleteTodo = (id) => {
     setTodos((previousTodo) => {
-        return previousTodo.filter((todo) => todo.id != id);
+      return previousTodo.filter((todo) => todo.id != id);
     });
-  }
+  };
+
+  let updateAllTask = () => {
+    setTodos((previousTodo) => {
+        return previousTodo.map((todo) => {
+            return {...todo, task: todo.task.toUpperCase()}
+        })
+    })
+  };
   return (
     <>
       <input
@@ -35,12 +42,18 @@ export default function TodoList() {
       <button onClick={addNewTask}>Add task</button>
       <br /> <br />
       <hr />
-      {todos.map((todo) => (
-        <li key={todo.id}>
-          <span style={{marginRight: "10px"}}>{todo.task}</span>
-          <button onClick={() => deleteTodo(todo.id)}>delete</button>
-        </li>
-      ))}
+      <ul>
+        {todos.map((todo) => (
+          <li key={todo.id}>
+            <span style={{ marginRight: "10px" }}>{todo.task}</span>
+            <button onClick={() => deleteTodo(todo.id)}>delete</button>
+          </li>
+        ))}
+      </ul>
+      <br />
+      <br />
+      <hr />
+      <button onClick={updateAllTask}>Update All Task</button>
     </>
   );
 }
