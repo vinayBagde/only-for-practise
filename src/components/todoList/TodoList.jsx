@@ -33,15 +33,16 @@ export default function TodoList() {
 
   let updateOneTask = (id) => {
     setTodos((previousTodo) => {
-        return previousTodo.map((todo) => {
-            if(todo.id === id) {
-                return {...todo, task: todo.task.toUpperCase()}
-            } else {
-                return todo;
-            }
-        })
-    })    
-  }
+      return previousTodo.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, task: todo.task.toUpperCase() };
+        } else {
+          return todo;
+        }
+      });
+    });
+  };
+
   return (
     <>
       <input
@@ -56,10 +57,15 @@ export default function TodoList() {
       <hr />
       <ul>
         {todos.map((todo) => (
-          <li key={todo.id} style={{marginBottom: "10px"}}>
+          <li key={todo.id} style={{ marginBottom: "10px" }}>
             <span style={{ marginRight: "10px" }}>{todo.task}</span>
             <button onClick={() => deleteTodo(todo.id)}>delete</button>
-            <button style={{ marginLeft: "10px" }} onClick={() => updateOneTask(todo.id)}>UpperCase One</button>
+            <button
+              style={{ marginLeft: "10px" }}
+              onClick={() => updateOneTask(todo.id)}
+            >
+              UpperCase One
+            </button>
           </li>
         ))}
       </ul>

@@ -4,6 +4,8 @@ import Button from "./components/button/Button.jsx";
 import Counter from "./components/counter/counter.jsx"
 import LikeButton from "./components/likeButton/LikeButton.jsx"
 import LudoBoard from "./components/ludoBoard/LudoBoard.jsx";
+import TodoList from "./components/todoList/TodoList.jsx";
+import Lottery from "./components/lottery/Lottery.jsx";
 export default function App() {
   return (
     <>
@@ -11,7 +13,9 @@ export default function App() {
       <Form/> */}
       {/* <Counter /> */}
       {/* <LikeButton/> */}
-      <LudoBoard/>
+      {/* <LudoBoard/> */}
+      {/* <TodoList/> */}
+      <Lottery/>
     </>
   );
 }
