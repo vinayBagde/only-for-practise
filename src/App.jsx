@@ -5,7 +5,7 @@ import Counter from "./components/counter/counter.jsx"
 import LikeButton from "./components/likeButton/LikeButton.jsx"
 import LudoBoard from "./components/ludoBoard/LudoBoard.jsx";
 import TodoList from "./components/todoList/TodoList.jsx";
-import Lottery from "./components/lottery/Lottery.jsx";
+import Lottery from "./components/lottery/lottery_2/LotteryTicket.jsx";
 export default function App() {
   return (
     <>

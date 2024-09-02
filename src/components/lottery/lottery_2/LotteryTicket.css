@@ -1,0 +1,7 @@
+#ticket-box {
+    border: 2px solid white;
+    border-radius: 15px;
+    width: 200px;
+    margin: auto;
+    padding-bottom: 10px;
+}
