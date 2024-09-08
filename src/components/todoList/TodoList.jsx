@@ -82,12 +82,13 @@ export default function TodoList() {
         <hr />
         {todos.map((el) => {
           return (
-            <li
-              key={el.id}
-              style={el.isDone ? { textDecoration: "line-through" } : {}}
-              id="tasks"
-            >
-              <span id="task">{el.task}</span>
+            <li key={el.id} id="tasks">
+              <span
+                id="task"
+                style={el.isDone ? { textDecoration: "line-through" } : {}}
+              >
+                {el.task}
+              </span>
               <button onClick={() => upperOne(el.id)}>Upper One Case</button>
               <button onClick={() => deleteTask(el.id)}>Delete</button>
               <button onClick={() => markOne(el.id)}>Mark One</button>
