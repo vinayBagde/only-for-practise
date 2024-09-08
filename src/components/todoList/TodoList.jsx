@@ -1,78 +1,105 @@
 import "./TodoList.css";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+
 export default function TodoList() {
-  let [todos, setTodos] = useState([{ task: "sample task", id: uuidv4() }]);
+  let [todos, setTodos] = useState([
+    { task: "sample task", id: uuidv4(), isDone: false },
+  ]);
+
   let [newTodo, setNewTodo] = useState("");
 
-  let updateTodoValue = (event) => {
+  let updateNewTodo = (event) => {
     setNewTodo(event.target.value);
   };
 
-  let addNewTask = () => {
-    setTodos((previousTodo) => {
-      return [...previousTodo, { task: newTodo, id: uuidv4() }];
+  let updateTodo = () => {
+    setTodos(() => {
+      return [...todos, { task: newTodo, id: uuidv4(), isDone: false }];
     });
-
     setNewTodo("");
   };
 
-  let deleteTodo = (id) => {
-    setTodos((previousTodo) => {
-      return previousTodo.filter((todo) => todo.id != id);
-    });
-  };
-
-  let updateAllTask = () => {
-    setTodos((previousTodo) => {
-      return previousTodo.map((todo) => {
-        return { ...todo, task: todo.task.toUpperCase() };
+  let upperAll = () => {
+    setTodos(() => {
+      return todos.map((el) => {
+        return { ...el, task: el.task.toUpperCase() };
       });
     });
   };
 
-  let updateOneTask = (id) => {
-    setTodos((previousTodo) => {
-      return previousTodo.map((todo) => {
-        if (todo.id === id) {
-          return { ...todo, task: todo.task.toUpperCase() };
+  let upperOne = (id) => {
+    setTodos(() => {
+      return todos.map((el) => {
+        if (el.id === id) {
+          return { ...el, task: el.task.toUpperCase() };
         } else {
-          return todo;
+          return el;
         }
       });
     });
   };
 
+  let deleteTask = (id) => {
+    setTodos(() => {
+      return todos.filter((el) => el.id !== id);
+    });
+  };
+
+  let markAllDone = () => {
+    setTodos(() => {
+      return todos.map((el) => {
+        return { ...el, isDone: true };
+      });
+    });
+  };
+
+  let markOne = (id) => {
+    setTodos(() => {
+      return todos.map((el) => {
+        if (el.id === id) {
+          return { ...el, isDone: true };
+        } else {
+          return el;
+        }
+      });
+    });
+  };
   return (
     <>
-      <input
-        type="text"
-        placeholder="enter task"
-        value={newTodo}
-        onChange={updateTodoValue}
-      />
-      <br /> <br />
-      <button onClick={addNewTask}>Add task</button>
-      <br /> <br />
-      <hr />
-      <ul>
-        {todos.map((todo) => (
-          <li key={todo.id} style={{ marginBottom: "10px" }}>
-            <span style={{ marginRight: "10px" }}>{todo.task}</span>
-            <button onClick={() => deleteTodo(todo.id)}>delete</button>
-            <button
-              style={{ marginLeft: "10px" }}
-              onClick={() => updateOneTask(todo.id)}
+      <div id="todo-box">
+        <input
+          type="text"
+          placeholder="add a task"
+          value={newTodo}
+          onChange={updateNewTodo}
+          id="inp"
+        />
+        <br />
+        <button onClick={updateTodo} id="addBtn">
+          Add Task
+        </button>
+        <hr />
+        {todos.map((el) => {
+          return (
+            <li
+              key={el.id}
+              style={el.isDone ? { textDecoration: "line-through" } : {}}
+              id="tasks"
             >
-              UpperCase One
-            </button>
-          </li>
-        ))}
-      </ul>
-      <br />
-      <br />
-      <hr />
-      <button onClick={updateAllTask}>UpperCase All</button>
+              <span id="task">{el.task}</span>
+              <button onClick={() => upperOne(el.id)}>Upper One Case</button>
+              <button onClick={() => deleteTask(el.id)}>Delete</button>
+              <button onClick={() => markOne(el.id)}>Mark One</button>
+            </li>
+          );
+        })}
+        <hr />
+        <div id="allBtn">
+          <button onClick={upperAll}>Upper All Case</button>
+          <button onClick={markAllDone}>Mark All Done</button>
+        </div>
+      </div>
     </>
   );
 }

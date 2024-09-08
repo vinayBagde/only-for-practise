@@ -14,8 +14,8 @@ export default function App() {
       {/* <Counter /> */}
       {/* <LikeButton/> */}
       {/* <LudoBoard/> */}
-      {/* <TodoList/> */}
-      <Lottery/>
+      <TodoList/>
+      {/* <Lottery/> */}
     </>
   );
 }
